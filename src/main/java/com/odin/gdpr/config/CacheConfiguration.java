@@ -213,6 +213,42 @@ public class CacheConfiguration {
                                        JHipsterProperties jHipsterProperties) {
             super(uri, cacheManager, provider);
             // register individual caches to make the stats info available.
+            registerPredefinedCache(com.odin.gdpr.domain.Region.class.getName(), new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Region.class.getName()).getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Country.class.getName(), new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Country.class.getName()).getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Location.class.getName(), new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Location.class.getName()).getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Department.class.getName(), new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Department.class.getName()).getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Department.class.getName() + ".employees", new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Department.class.getName() + ".employees").getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Task.class.getName(), new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Task.class.getName()).getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Task.class.getName() + ".jobs", new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Task.class.getName() + ".jobs").getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Employee.class.getName(), new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Employee.class.getName()).getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Employee.class.getName() + ".jobs", new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Employee.class.getName() + ".jobs").getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Job.class.getName(), new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Job.class.getName()).getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.Job.class.getName() + ".tasks", new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.Job.class.getName() + ".tasks").getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
+            registerPredefinedCache(com.odin.gdpr.domain.JobHistory.class.getName(), new JCache<Object, Object>(
+                cacheManager.getCache(com.odin.gdpr.domain.JobHistory.class.getName()).getAdvancedCache(), this,
+                ConfigurationAdapter.create()));
             // jhipster-needle-infinispan-add-entry
             if (jHipsterProperties.getCache().getInfinispan().isStatsEnabled()) {
                 for (String cacheName : cacheManager.getCacheNames()) {
